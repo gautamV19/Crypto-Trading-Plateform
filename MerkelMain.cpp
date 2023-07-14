@@ -1,5 +1,45 @@
 #include "MerkelMain.h"
 #include <iostream>
+#include <vector>
+#include "OrderBookEntry.h"
+
+MerkelMain::MerkelMain()
+{
+}
+
+void MerkelMain::init()
+{
+    loadOrderBook();
+    int input;
+    while (true)
+    {
+        printMenu();
+        input = getUserOption();
+        processUseroption(input);
+    }
+}
+
+void MerkelMain::loadOrderBook()
+{
+
+    orders.push_back({1000, 0.002705, "time", "pdt", OrderBookType::bid});
+    orders.push_back({2000, 0.002705, "time", "pdt", OrderBookType::ask});
+
+    // for (OrderBookEntry &order : orders)
+    // {
+    //     std::cout << "Price is " << order.price << std::endl;
+    // }
+
+    // for (unsigned int i = 0; i < orders.size(); ++i)
+    // {
+    //     std::cout << "Price is " << orders[i].price << std::endl;
+    // }
+
+    // for (unsigned int i = 0; i < orders.size(); ++i)
+    // {
+    //     std::cout << "Price is " << orders.at(i).price << std::endl;
+    // }
+}
 
 void MerkelMain::printMenu()
 {
@@ -39,7 +79,8 @@ void MerkelMain::printHelp()
 }
 void MerkelMain::printMarketStats()
 {
-    std::cout << "Market looks good" << std::endl;
+
+    std::cout << "Orderbook Contains :" << orders.size() << " entries." << std::endl;
 }
 void MerkelMain::enterOffer()
 {
