@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include "OrderBookEntry.h"
+#include "CSVReader.h"
 
 MerkelMain::MerkelMain()
 {
@@ -21,24 +22,7 @@ void MerkelMain::init()
 
 void MerkelMain::loadOrderBook()
 {
-
-    orders.push_back({1000, 0.002705, "time", "pdt", OrderBookType::bid});
-    orders.push_back({2000, 0.002705, "time", "pdt", OrderBookType::ask});
-
-    // for (OrderBookEntry &order : orders)
-    // {
-    //     std::cout << "Price is " << order.price << std::endl;
-    // }
-
-    // for (unsigned int i = 0; i < orders.size(); ++i)
-    // {
-    //     std::cout << "Price is " << orders[i].price << std::endl;
-    // }
-
-    // for (unsigned int i = 0; i < orders.size(); ++i)
-    // {
-    //     std::cout << "Price is " << orders.at(i).price << std::endl;
-    // }
+    orders = CSVReader::readCSV("20200317.csv");
 }
 
 void MerkelMain::printMenu()
@@ -81,6 +65,22 @@ void MerkelMain::printMarketStats()
 {
 
     std::cout << "Orderbook Contains :" << orders.size() << " entries." << std::endl;
+    unsigned int asks = 0;
+    unsigned int bids = 0;
+
+    for (OrderBookEntry &e : orders)
+    {
+        if (e.orderType == OrderBookType::ask)
+        {
+            asks++;
+        }
+        if (e.orderType == OrderBookType::bid)
+        {
+            bids++;
+        }
+    }
+
+    std::cout << "Orderbook Contains :" << asks << " " << bids << std::endl;
 }
 void MerkelMain::enterOffer()
 {
