@@ -65,3 +65,33 @@ double OrderBook::getLowPrice(std::vector<OrderBookEntry> &orders)
 
     return min;
 }
+
+std::string OrderBook::getEarliestTime()
+{
+    return orders[0].timestamp;
+}
+
+std::string OrderBook::getNextTime(std::string timestamp)
+{
+    std::string next_timestamp = "";
+    for (OrderBookEntry &e : orders)
+    {
+        if (e.timestamp > timestamp)
+        {
+            next_timestamp = e.timestamp;
+            break;
+        }
+    }
+
+    if (next_timestamp == "")
+    {
+        next_timestamp = orders[0].timestamp;
+    }
+    return next_timestamp;
+}
+
+void OrderBook::insertOrder(OrderBookEntry &order)
+{
+    orders.push_back(order);
+    std::sort(orders.begin(), orders.end(), OrderBook::compareByTimestamp);
+}

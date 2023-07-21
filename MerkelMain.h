@@ -15,12 +15,14 @@ private:
     void printMenu();
     void printHelp();
     void printMarketStats();
-    void enterOffer();
+    void enterAsk();
     void enterBid();
     void printWallet();
     void nextTimeFrame();
     int getUserOption();
     void processUseroption(int userOption);
+
+    std::string currentTime;
 
     OrderBook orderBook{"20200317.csv"};
 };
