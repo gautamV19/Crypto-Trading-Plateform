@@ -20,12 +20,10 @@ public:
     std::string getNextTime(std::string timestamp);
     void insertOrder(OrderBookEntry &order);
 
+    std::vector<OrderBookEntry> matchAsksToBids(std::string product, std::string timestamp);
+
     static double getHighPrice(std::vector<OrderBookEntry> &orders);
     static double getLowPrice(std::vector<OrderBookEntry> &orders);
-    static bool compareByTimestamp(OrderBookEntry &e1, OrderBookEntry &e2)
-    {
-        return e1.timestamp < e2.timestamp;
-    }
 
 private:
     std::vector<OrderBookEntry> orders;
