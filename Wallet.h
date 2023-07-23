@@ -15,6 +15,10 @@ public:
     bool containsCurrency(std::string type, double amount);
     /** checks if wallet can cope with this ask or bid */
     bool canFulfillOrder(OrderBookEntry Order);
+    /** Update the contents of the wallet
+     * Assumes order was made by owner of the wallet
+     */
+    void processSale(OrderBookEntry &sale);
     /** generate a string representation of the wallet */
     std::string toString();
 
