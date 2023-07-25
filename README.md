@@ -9,8 +9,6 @@ One of the key highlights of this platform is the implementation of an order boo
 * Print market stats.
 * Make an ask or a bid.
 * Check your wallet balance.
-* 
-<img width="546" alt="Screenshot 2023-07-23 at 3 52 53 PM" src="https://github.com/gautamV19/Crypto-Trading-Plateform/assets/86219774/994c7b61-6263-4322-a9b7-68be9d4b18eb">
 
 ## Key Functionalities
 
@@ -40,11 +38,19 @@ g++ main.cpp -o trading_platform
 ```
 ./trading_platform
 ```
-
-## License
-
-The trading platform is licensed under the MIT License.
+- Successful execution will show this:
+```
+1: Print help
+2: Print exchange stats
+3: Make an offer
+4: Make a bid
+5: Print wallet
+6: Continue
+===========
+Current time is: 2020/03/17 17:01:24.884492
+Type in 1-6
+```
 
 ## Credits
 
-This project was created by gautamV19.
+This project was created by [@gautamV19](https://www.github.com/gautamV19).
